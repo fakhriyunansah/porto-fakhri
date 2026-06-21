@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fakhri Sabran Yunansah — Portofolio</title>
+<style>
+  :root{
+    --ink:#1c1c1a;
+    --paper:#fafaf7;
+    --paper-dim:#f1f0eb;
+    --line:#dedcd3;
+    --accent:#2e4034;
+    --accent-soft:#5c7264;
+    --muted:#7a786f;
+    --rust:#b5572f;
+    --gold:#c79a3e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Avenir Next', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Iowan Old Style','Palatino Linotype', Palatino, Georgia, serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 28px;}
+
+  /* NAV */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,250,247,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:18px 28px;max-width:920px;margin:0 auto;
+  }
+  .logo{font-family:'Iowan Old Style',Georgia,serif;font-size:18px;font-weight:600;letter-spacing:0.02em;color:var(--accent);}
+  .navlinks{display:flex;gap:28px;font-size:14px;color:var(--muted);}
+  .navlinks a:hover{color:var(--accent);}
+
+  /* HERO */
+  .hero{
+    padding:88px 0 0;
+    border-bottom:1px solid var(--line);
+    display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center;
+  }
+  .hero-text{padding-bottom:72px;}
+  .eyebrow{
+    font-size:12.5px;letter-spacing:0.14em;text-transform:uppercase;
+    color:var(--rust);margin-bottom:18px;font-weight:700;
+  }
+  .hero h1{
+    font-size:46px;line-height:1.15;margin-bottom:18px;
+  }
+  .hero h1 .accent-word{color:var(--accent);font-style:italic;}
+  .hero p{
+    font-size:17px;color:var(--muted);max-width:540px;margin-bottom:30px;
+  }
+  .hero-meta{
+    display:flex;gap:18px;flex-wrap:wrap;font-size:14px;color:var(--accent-soft);
+  }
+  .hero-meta span{
+    background:var(--paper-dim);border:1px solid var(--line);
+    padding:6px 12px;border-radius:20px;
+  }
+
+  /* SIGNATURE PANEL */
+  .signature{
+    align-self:stretch;height:100%;
+    background:linear-gradient(160deg, var(--accent) 0%, #1e2c24 100%);
+    color:var(--paper);
+    display:flex;flex-direction:column;justify-content:space-between;
+    padding:40px 30px;position:relative;overflow:hidden;
+  }
+  .signature::before{
+    content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;
+    border-radius:50%;background:radial-gradient(circle, var(--gold) 0%, transparent 70%);
+    opacity:0.35;
+  }
+  .signature .initials{
+    font-family:'Iowan Old Style',Georgia,serif;font-size:64px;font-weight:600;
+    letter-spacing:-0.02em;line-height:1;
+  }
+  .signature .role{
+    font-size:13px;letter-spacing:0.06em;text-transform:uppercase;
+    color:var(--gold);margin-top:10px;font-weight:600;
+  }
+  .signature .stats{
+    display:flex;flex-direction:column;gap:14px;margin-top:32px;
+  }
+  .signature .stat{border-top:1px solid rgba(250,250,247,0.18);padding-top:12px;}
+  .signature .stat .num{font-size:22px;font-weight:700;font-family:'Iowan Old Style',Georgia,serif;}
+  .signature .stat .label{font-size:12px;color:rgba(250,250,247,0.65);margin-top:2px;}
+
+  @media(max-width:780px){
+    .hero{grid-template-columns:1fr;}
+    .signature{order:-1;border-radius:8px;margin-top:40px;}
+  }
+
+  /* SECTION GENERIC */
+  section.block{
+    padding:64px 0;border-bottom:1px solid var(--line);
+  }
+  .section-head{
+    display:flex;justify-content:space-between;align-items:baseline;
+    margin-bottom:36px;gap:24px;
+  }
+  .section-head h2{font-size:26px;position:relative;padding-left:18px;}
+  .section-head h2::before{
+    content:"";position:absolute;left:0;top:6px;bottom:6px;width:4px;
+    background:var(--rust);border-radius:2px;
+  }
+  .section-head .count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;}
+
+  /* TIMELINE-STYLE ENTRIES (organisasi & magang share this) */
+  .entry{
+    display:grid;grid-template-columns:160px 1fr;gap:24px;
+    padding:26px 0;border-top:1px solid var(--line);
+  }
+  .entry:first-of-type{border-top:none;}
+  .entry .period{
+    font-size:13px;color:var(--muted);padding-top:3px;
+  }
+  .entry .role{font-size:17px;font-weight:600;margin-bottom:4px;}
+  .entry .org{font-size:14.5px;color:var(--accent-soft);margin-bottom:10px;}
+  .entry ul{padding-left:18px;color:var(--ink);font-size:14.5px;}
+  .entry ul li{margin-bottom:5px;color:#3a3a36;}
+  .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+  .tag{
+    font-size:12px;padding:4px 10px;border:1px solid var(--line);
+    border-radius:3px;color:var(--accent-soft);background:var(--paper-dim);
+  }
+
+  /* PROJECTS GRID */
+  .projects{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
+  .project{
+    background:var(--paper);padding:28px;
+  }
+  .project h3{font-size:17px;margin-bottom:8px;}
+  .project p{font-size:14px;color:var(--muted);margin-bottom:14px;}
+  .project .tags{margin-top:0;}
+  .project .link{
+    display:inline-block;margin-top:14px;font-size:13px;color:var(--accent);
+    border-bottom:1px solid var(--accent-soft);
+  }
+  @media(max-width:680px){
+    .projects{grid-template-columns:1fr;}
+    .entry{grid-template-columns:1fr;gap:6px;}
+  }
+
+  /* SKILLS */
+  .skills-row{display:flex;flex-wrap:wrap;gap:10px;}
+  .skill-pill{
+    font-size:13.5px;padding:7px 14px;border:1px solid var(--line);
+    border-radius:20px;color:var(--ink);
+  }
+
+  /* CONTACT */
+  footer{padding:64px 0 80px;}
+  footer h2{font-size:28px;margin-bottom:14px;}
+  footer p{color:var(--muted);max-width:460px;margin-bottom:28px;}
+  .contact-links{display:flex;gap:20px;flex-wrap:wrap;}
+  .contact-links a{
+    font-size:14px;padding:11px 20px;border:1px solid var(--ink);border-radius:3px;
+    transition:background 0.15s, color 0.15s;
+  }
+  .contact-links a:hover{background:var(--ink);color:var(--paper);}
+  .foot-note{margin-top:48px;font-size:12.5px;color:var(--muted);}
+
+  ::selection{background:var(--accent);color:var(--paper);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Fakhri Yunansah</div>
+    <div class="navlinks">
+      <a href="#projek">Projek</a>
+      <a href="#magang">Magang</a>
+      <a href="#studi-independen">Studi Independen</a>
+      <a href="#pendidikan">Pendidikan</a>
+      <a href="#skills">Keahlian</a>
+      <a href="#kontak">Kontak</a>
+    </div>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div class="hero-text">
+      <div class="eyebrow">Portofolio</div>
+      <h1>Fakhri Sabran Yunansah</h1>
+      <p>Lulusan Sistem Informasi Universitas Pembangunan Nasional "Veteran" Jawa Timur dengan minat pada Data Analytics, Business Intelligence, dan Machine Learning. Berpengalaman dalam analisis data, visualisasi data, manajemen database, dan pengembangan model machine learning melalui proyek akademik maupun magang.</p>
+      <div class="hero-meta">
+        <span>📍 Jakarta, Indonesia</span>
+        <span>🎓 UPN "Veteran" Jawa Timur — Sistem Informasi (IPK 3.88/4.00)</span>
+        <span>✉️ fakhri.yunansah@gmail.com</span>
+        <span>📱 +62 895-3667-37425</span>
+      </div>
+    </div>
+    <div class="signature">
+      <div>
+        <div class="initials">FY</div>
+        <div class="role">Information Systems Graduate</div>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <div class="num">3.88 / 4.00</div>
+          <div class="label">IPK Akademik</div>
+        </div>
+        <div class="stat">
+          <div class="num">Top 50</div>
+          <div class="label">Tim Capstone Bangkit Academy</div>
+        </div>
+        <div class="stat">
+          <div class="num">2 Program</div>
+          <div class="label">Magang &amp; Studi Independen</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="pendidikan">
+    <div class="section-head">
+      <h2>Pendidikan</h2>
+    </div>
+    <div class="entry">
+      <div class="period">Agu 2022 — Jul 2026</div>
+      <div>
+        <div class="role">Sarjana Sistem Informasi — IPK 3.88 / 4.00</div>
+        <div class="org">Universitas Pembangunan Nasional "Veteran" Jawa Timur</div>
+        <ul>
+          <li>Mata kuliah relevan: Data Mining, Data Analysis, Integrated Programming, Machine Learning and Deep Learning, Enterprise Systems, Decision Support Systems.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="projek">
+    <div class="section-head">
+      <h2>Projek</h2>
+      <div class="count">3 projek</div>
+    </div>
+    <div class="projects">
+      <div class="project">
+        <h3>BolaTix — Capstone Project Bangkit Academy</h3>
+        <p>Aplikasi penjualan tiket pertandingan Liga 1 dengan model content-based filtering menggunakan TensorFlow. Bertugas menyiapkan dataset, pre-processing, exploratory data analysis, serta berkoordinasi dengan tim cloud computing dan mobile development.</p>
+        <div class="tags">
+          <span class="tag">TensorFlow</span><span class="tag">Python</span><span class="tag">Machine Learning</span>
+        </div>
+        <a class="link" href="#">Terpilih sebagai Best 50 Capstone Teams</a>
+      </div>
+      <div class="project">
+        <h3>Data Migration &amp; Integration — Salesforce CRM</h3>
+        <p>Membantu proses migrasi dan integrasi data pelanggan ke Salesforce CRM, termasuk validasi dan cleansing data agar kualitas data tetap tinggi sebelum migrasi.</p>
+        <div class="tags">
+          <span class="tag">Salesforce</span><span class="tag">Data Validation</span><span class="tag">Excel</span>
+        </div>
+      </div>
+      <div class="project">
+        <h3>Klasifikasi Emosi Multilabel dengan IndoBERT</h3>
+        <p>Tugas akhir/skripsi: mengembangkan model klasifikasi emosi multilabel untuk menganalisis emosi pada teks media sosial berbahasa Indonesia menggunakan IndoBERT, lengkap dengan preprocessing, tokenisasi, dan evaluasi performa model.</p>
+        <div class="tags">
+          <span class="tag">IndoBERT</span><span class="tag">NLP</span><span class="tag">Python</span>
+        </div>
+        <a class="link" href="#">F1-Score, Precision, Recall, Hamming Loss</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="magang">
+    <div class="section-head">
+      <h2>Pengalaman Magang</h2>
+      <div class="count">1 perusahaan</div>
+    </div>
+
+    <div class="entry">
+      <div class="period">Feb — Jul 2025</div>
+      <div>
+        <div class="role">Customer Database Management Intern</div>
+        <div class="org">PT. Telekomunikasi Indonesia Internasional (Telin)</div>
+        <ul>
+          <li>Mengelola dan memelihara data pelanggan untuk memastikan akurasi, kelengkapan, dan konsistensi data.</li>
+          <li>Melakukan validasi dan cleansing data untuk mendukung inisiatif peningkatan kualitas data pelanggan.</li>
+          <li>Menyiapkan laporan operasional dan memantau aktivitas manajemen database menggunakan Salesforce, Excel, dan Google Sheets.</li>
+          <li>Berkolaborasi dengan tim account management dan project untuk mendukung operasional database pelanggan.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="studi-independen">
+    <div class="section-head">
+      <h2>Studi Independen</h2>
+      <div class="count">1 program</div>
+    </div>
+
+    <div class="entry">
+      <div class="period">Sep 2024 — Jan 2025</div>
+      <div>
+        <div class="role">Machine Learning Path Cohort</div>
+        <div class="org">Bangkit Academy 2024 by Google, GoTo, Tokopedia, Traveloka</div>
+        <ul>
+          <li>Mengikuti kelas ILT wajib terkait machine learning dan sesi mentoring mingguan.</li>
+          <li>Memperdalam pengetahuan machine learning melalui Coursera dan Dicoding.</li>
+          <li>Terpilih sebagai 1 dari 5 siswa dengan interaksi tertinggi pada Weekly Consultation.</li>
+          <li>Terpilih sebagai 1 dari 1.000 Most Active Students dalam sesi ILT (Tech and Softskills).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="skills">
+    <div class="section-head">
+      <h2>Keahlian</h2>
+    </div>
+    <div class="skills-row">
+      <span class="skill-pill">Python</span>
+      <span class="skill-pill">PHP</span>
+      <span class="skill-pill">SQL</span>
+      <span class="skill-pill">HTML & CSS</span>
+      <span class="skill-pill">Machine Learning</span>
+      <span class="skill-pill">Data Analysis</span>
+      <span class="skill-pill">Data Cleansing</span>
+      <span class="skill-pill">PhpMyAdmin</span>
+      <span class="skill-pill">Microsoft Excel</span>
+      <span class="skill-pill">SPSS</span>
+      <span class="skill-pill">Leadership</span>
+      <span class="skill-pill">Public Speaking</span>
+    </div>
+  </section>
+
+  <footer id="kontak">
+    <h2>Mari terhubung</h2>
+    <p>Terbuka untuk peluang kerja, magang, maupun kolaborasi projek di bidang data mapun IT. Jangan ragu untuk menghubungi saya.</p>
+    <div class="contact-links">
+      <a href="mailto:fakhri.yunansah@gmail.com">Kirim Email</a>
+      <a href="http://www.linkedin.com/in/fakhri-sabran-yunansah-9979a2192">LinkedIn</a>
+      <a href="https://drive.google.com/file/d/1N3XrjTBKPT5igwdTcGBYYXUDkj9BaOXa/view?usp=drive_link">Unduh CV</a>
+    </div>
+    <div class="foot-note">© 2026 Fakhri Sabran Yunansah.</div>
+  </footer>
+
+</main>
+
+</body>
+</html>
